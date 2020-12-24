@@ -1,6 +1,4 @@
 import React from 'react';
-import Footer from './Footer';
-import Header from './Header';
 import Head from 'next/head';
 
 interface LayoutType {
@@ -45,9 +43,9 @@ const Layout: React.FC<LayoutType> = ({
 					key='og:image'
 				/>
 			</Head>
-			<Header />
-			<main className='min-h-screen mt-16'>{children}</main>
-			<Footer />
+			<main style={{ minHeight: '80vh' }} className='mt-16'>
+				{children}
+			</main>
 		</>
 	);
 };

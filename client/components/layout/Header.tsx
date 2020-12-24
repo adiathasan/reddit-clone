@@ -15,7 +15,7 @@ const Header = () => {
 	const [isDark, setIsdark] = useState(false);
 
 	useEffect(() => {
-		setIsdark(theme === 'light' ? false : true);
+		setIsdark(theme === 'dark' ? true : false);
 	}, [theme]);
 
 	const handleDark = () => {
@@ -30,9 +30,9 @@ const Header = () => {
 						<div className='cursor-pointer'>
 							<Link href='/'>
 								<img
-									className='w-8 h-8'
-									src='https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg'
-									alt='Workflow'
+									className='w-10 h-10'
+									src='./favicon.ico'
+									alt='reddit-smile'
 								/>
 							</Link>
 						</div>
@@ -43,7 +43,7 @@ const Header = () => {
 							<input
 								type='search'
 								placeholder='Search...'
-								className='flex-1 p-2 bg-transparent border-none outline-none dark:text-white'
+								className='flex-1 p-2 bg-transparent border-none outline-none dark:text-gray-200'
 							/>
 						</div>
 					</div>
@@ -65,9 +65,7 @@ const Header = () => {
 							))}
 						</div>
 					</div>
-					<div
-						className='ml-auto cursor-pointer md:ml-8'
-						onClick={() => handleDark}>
+					<div className='ml-auto cursor-pointer md:ml-8' onClick={handleDark}>
 						{isDark ? (
 							<NightsStayIcon className='text-white ' />
 						) : (
@@ -77,7 +75,7 @@ const Header = () => {
 					<div className='block ml-4 md:hidden'>
 						<MenuIcon
 							className={`cursor-pointer ${
-								theme === 'light' ? 'text-gray-900' : 'text-white'
+								isDark ? ' text-white ' : 'text-gray-900'
 							}`}
 						/>
 					</div>
