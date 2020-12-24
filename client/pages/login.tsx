@@ -28,7 +28,11 @@ const login = () => {
 						className='form-input'
 					/>
 
-					<Button size='large' variant='contained' color='primary'>
+					<Button
+						type='submit'
+						size='large'
+						variant='contained'
+						color='primary'>
 						Submit
 					</Button>
 				</form>

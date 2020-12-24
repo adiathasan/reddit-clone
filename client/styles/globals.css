@@ -18,7 +18,7 @@ footer {
 }
 
 .div {
-	box-shadow: 0 0 8px 2px #014d6bf3;
+	box-shadow: 0 0 8px 2px #0126352c;
 }
 
 @layer utilities {
@@ -52,6 +52,10 @@ footer {
 	.form-input:focus {
 		box-shadow: 0 0 8px 2px #036d972d;
 		border-color: #014d6bf3;
+	}
+
+	.form-input:hover {
+		box-shadow: 0 0 8px 2px #0126352c;
 	}
 
 	@variants dark {
