@@ -4,7 +4,7 @@ export const navLinkUnAuth = [
 		link: '/login',
 	},
 	{
-		name: 'Register',
+		name: 'Sign Up',
 		link: '/register',
 	},
 ];

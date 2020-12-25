@@ -1,31 +1,37 @@
 import React, { FormEvent, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useCookies } from 'react-cookie';
 import Button from '@material-ui/core/Button';
 import Layout from '../components/layout/Layout';
-import useLoader from '../hooks/useLoader';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import _ from 'lodash';
 
-const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+import useLoader from '../hooks/useLoader';
+import { emailRegex, passwordRegex } from '../helper';
 
-const passwordRegex = new RegExp(
-	'^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})'
-);
-
-const register: React.FC = () => {
+const register = () => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
-
 	const [message, setMessage] = useState(null);
-
 	const [messageType, setMessageType] = useState('success');
-
 	const [isFormValid, setIsFormValid] = useState(false);
+	const [open, setOpen] = useState(false);
+
+	const [cookie, setCookie] = useCookies(['user']);
 
 	const { isLoading, setIsLoading } = useLoader();
 
-	const [open, setOpen] = useState(false);
+	const router = useRouter();
+
+	useEffect(() => {
+		if (!_.isEmpty(cookie)) {
+			router.push('/');
+			console.log(cookie);
+		}
+	}, [cookie]);
 
 	const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
 		if (reason === 'clickaway') {
@@ -121,6 +127,11 @@ const register: React.FC = () => {
 					setMessage(data.error);
 					setOpen(true);
 				} else {
+					setCookie('user', JSON.stringify(data), {
+						path: '/',
+						maxAge: 36000, // Expires after 10hr
+						sameSite: true,
+					});
 					setMessageType('success');
 					setMessage('Account Successfully Created');
 					setOpen(true);
@@ -152,17 +163,19 @@ const register: React.FC = () => {
 
 		if (formValid) {
 			setIsFormValid(true);
+		} else {
+			setIsFormValid(false);
 		}
 	}, [name, email, password, confirmPassword]);
 
 	return (
-		<Layout title='register'>
+		<Layout title='sign up'>
 			<div className='mt-32 '>
 				<form
 					onSubmit={handleSubmit}
 					className='flex flex-col items-center justify-center max-w-full gap-6 p-8 mx-auto bg-gray-200 shadow-lg w-96 dark:bg-gray-800 rounded-xl'>
 					<h1 className='text-3xl font-semibold text-gray-800 dark:text-gray-100'>
-						Register
+						Sign Up
 					</h1>
 					<input
 						required

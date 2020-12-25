@@ -43,7 +43,7 @@ const Layout: React.FC<LayoutType> = ({
 					key='og:image'
 				/>
 			</Head>
-			<main style={{ minHeight: '80vh' }} className='mt-16'>
+			<main style={{ minHeight: '80vh' }} className='mt-16 font-mono'>
 				{children}
 			</main>
 		</>

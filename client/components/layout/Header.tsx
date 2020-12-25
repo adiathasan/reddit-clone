@@ -50,12 +50,12 @@ const Header = () => {
 					<div className='hidden ml-auto md:block '>
 						<div className='flex items-center gap-8 '>
 							{navLinkUnAuth.map(({ link, name }, i) => (
-								<div key={`${name}__${i}`} className={`flex items-center`}>
+								<div key={`${name}__${i}`} className={`flex items-center `}>
 									<Link href={link}>
 										<a
 											className={
 												router.pathname === link
-													? 'nav-link-active dark:dark-nav-link-active'
+													? 'nav-link-active dark:dark-nav-link-active '
 													: 'nav-link dark:dark-nav-link'
 											}>
 											{name}
