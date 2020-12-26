@@ -8,3 +8,10 @@ export const navLinkUnAuth = [
 		link: '/register',
 	},
 ];
+
+export const navLinkAuth = [
+	{
+		name: 'Logout',
+		link: '/logout',
+	},
+];

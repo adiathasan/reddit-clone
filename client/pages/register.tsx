@@ -170,10 +170,12 @@ const register = () => {
 
 	return (
 		<Layout title='sign up'>
-			<div className='mt-32 '>
+			<div className='mt-24 overflow-hidden'>
 				<form
 					onSubmit={handleSubmit}
-					className='flex flex-col items-center justify-center max-w-full gap-6 p-8 mx-auto bg-gray-200 shadow-lg w-96 dark:bg-gray-800 rounded-xl'>
+					className={`flex flex-col items-center justify-center max-w-full gap-6 p-8 mx-auto bg-gray-100 shadow-lg w-96 dark:from-gray-900 bg-gradient-to-b dark:to-black rounded-xl ${
+						isLoading && 'animate-pulse'
+					}`}>
 					<h1 className='text-3xl font-semibold text-gray-800 dark:text-gray-100'>
 						Sign Up
 					</h1>
@@ -186,7 +188,7 @@ const register = () => {
 						}}
 						value={name}
 						type='text'
-						placeholder='username...'
+						placeholder='username'
 						className='form-input '
 					/>
 					<input
@@ -198,7 +200,7 @@ const register = () => {
 						}}
 						value={email}
 						type='email'
-						placeholder='email...'
+						placeholder='email'
 						className='form-input'
 					/>
 					<input
@@ -210,7 +212,7 @@ const register = () => {
 						}}
 						value={password}
 						type='password'
-						placeholder='password...'
+						placeholder='password'
 						className='form-input'
 					/>
 					<input
@@ -222,7 +224,7 @@ const register = () => {
 						}}
 						value={confirmPassword}
 						type='password'
-						placeholder='confirm password...'
+						placeholder='confirm password'
 						className='form-input'
 					/>
 					<Button

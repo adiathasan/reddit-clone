@@ -138,10 +138,10 @@ const login = () => {
 
 	return (
 		<Layout title='login'>
-			<div className='mt-32 '>
+			<div className='mt-24'>
 				<form
 					onSubmit={handleSubmit}
-					className='flex flex-col items-center justify-center max-w-full gap-6 p-8 mx-auto bg-gray-200 shadow-lg w-96 dark:bg-gray-800 rounded-xl'>
+					className='flex flex-col items-center justify-center max-w-full gap-6 p-8 mx-auto bg-gray-100 shadow-lg w-96 dark:from-gray-900 bg-gradient-to-b dark:to-black rounded-xl'>
 					<h1 className='text-3xl font-semibold text-gray-800 dark:text-gray-100'>
 						Login
 					</h1>
@@ -153,7 +153,7 @@ const login = () => {
 						}}
 						value={name}
 						type='text'
-						placeholder='username...'
+						placeholder='username'
 						className='form-input '
 					/>
 
@@ -165,7 +165,7 @@ const login = () => {
 						}}
 						value={password}
 						type='password'
-						placeholder='password...'
+						placeholder='password'
 						className='form-input'
 					/>
 

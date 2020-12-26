@@ -2,10 +2,16 @@ module.exports = {
 	purge: ['./pages/**/*.js', './components/**/*.js'],
 	darkMode: 'class', // or 'media' or 'class'
 	theme: {
-		extend: {},
+		extend: {
+			spacing: {
+				1000: '1000px',
+			},
+		},
 	},
 	variants: {
-		extend: {},
+		extend: {
+			opacity: 'disabled',
+		},
 	},
 	plugins: [],
 };
