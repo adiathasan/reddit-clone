@@ -30,7 +30,8 @@ export default function Home({
 								className='w-full p-4 my-4 text-black bg-gray-300 border rounded outline-none hover:shadow focus:ring focus:ring-offset-blue-500 dark:focus:ring-offset-blue-400 '
 								name='textarea'
 								id='textarea++'
-								placeholder='Create Post'></textarea>
+								placeholder='Create Post'
+							></textarea>
 						</div>
 						<div className='p-2 bg-gray-300 rounded cursor-pointer dark:bg-gray-700'>
 							<PanoramaIcon />
@@ -40,7 +41,10 @@ export default function Home({
 						</div>
 					</div>
 					{posts.map((post) => (
-						<div className='flex items-start justify-center w-full rounded shadow-md dark:bg-gray-900'>
+						<div
+							key={post.id}
+							className='flex items-start justify-center w-full rounded shadow-md dark:bg-gray-900'
+						>
 							<div className='flex flex-col items-center justify-start p-2 bg-gray-200 rounded-l dark:bg-gray-900 '>
 								<ForwardIcon className='text-red-600 transform -rotate-90' />
 								<span className='font-semibold text-red-600'>129</span>
@@ -80,14 +84,24 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 		method: 'GET',
 	};
 
-	const data = await fetch(
-		'http://localhost:1337/parse/classes/Post',
-		config
-	).then((res) => res.json());
+	// const data = await fetch(
+	// 	'http://localhost:1337/parse/classes/Post',
+	// 	config
+	// ).then((res) => res.json());
+
+	const data = null;
 
 	return {
 		props: {
-			posts: data.results && data.results,
+			posts: data
+				? data.results
+				: [
+						{
+							id: 12,
+							title: 'The hill way road',
+							body: 'I will die when my time comes',
+						},
+				  ],
 		},
 		revalidate: 1,
 	};
